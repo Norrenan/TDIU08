@@ -1,0 +1,37 @@
+with Ada.Command_Line; 	use Ada.Command_Line;
+with Ada.Text_Io; 	use Ada.Text_Io;
+
+procedure O5 is 
+   
+   No_Arguments : exception;
+   Bad_Arguments : exception;
+   
+   arg,J : Integer;
+   
+begin
+   arg := Argument_Count;
+   
+   if arg = 0 then
+      raise No_Arguments;
+      
+   elsif Arg  < 2 or arg > 2 then
+      raise Bad_Arguments;
+   end if;
+   
+   J := Integer'Value(Argument(1));
+   
+   Put("Meddelande: ");
+   for Z in 1..J loop
+      Put(Argument(2));
+   end loop;
+   New_Line;
+   Put("Programmet """ & Command_Name & """ avslutas.");
+   
+exception
+   
+   when No_Arguments =>
+      Put("Inga argument angivna.");
+   when Bad_Arguments =>
+      Put("Fel antal argument angivna.");
+      
+end O5;

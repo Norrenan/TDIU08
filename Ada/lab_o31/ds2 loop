@@ -1,0 +1,22 @@
+ for I in reverse Charrange loop
+	 Get(DS2(False)(I));
+	 Get(Ch);
+      end loop;
+      for I in reverse Charrange loop
+	 Get(DS2(True)(I));
+	 if I = '5' then 
+	    exit;
+	 end if;
+	 Get(Ch); 
+      end loop;
+
+
+ 
+      for I in reverse Charrange loop
+	 Put(" ");
+	 Put(DS2(False)(I));
+      end loop;
+      for I in reverse Charrange loop
+	 Put(" ");
+	 Put(DS2(True)(I));
+      end loop;

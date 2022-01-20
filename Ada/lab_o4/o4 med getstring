@@ -1,0 +1,28 @@
+--  Put("Mata in datum: ");
+	    --  Get_Line(S,X);
+	    --  if (X /= 10) or S(5) /= '-' or S(8) /= '-'  then
+	    --     raise Format_Error;
+	    --  end if;
+	    --  Y := S(1..4); 
+	    --  M := S(6..7);
+	    --  D := S(9..10);
+	    
+	    --  if Y < "1532" or Y > "9000" then
+	    --     raise Year_Error;
+	    --  end if;
+	    --  if M <= "00" or M > "12" then
+	    --     raise Month_Error;
+	    --  end if;
+	    --  if D > "31" or D <= "00" then
+	    --     raise Day_Error;
+	    --  end if;
+	    --  if D = "29" then
+	    --     if Check_Leap(Y) = False then
+	    --  	  raise Day_Error;
+	    --     end if;
+	    --  end if;
+	    
+	    
+	    
+	    --  exit;
+	    --  Skip_Line; -- DEBUG

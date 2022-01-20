@@ -1,0 +1,23 @@
+--  if Ch /= '-' or ch2 /= '-' then
+--  	 raise Format_Error;
+--        end if;
+--        if Y < 1535 or Y > 9000 then
+--  	 raise Year_Error;
+--        end if;
+--        if M <= 0 or M > 12 then
+--  	 raise Month_Error;
+--        end if;
+--        if D > 31 or D <= 00 then
+--  	 raise Day_Error;
+--        end if;
+--        if D = 31 and(M = 4 or M = 6 or M = 9 or M = 11) then --SNYGGARE?
+--  	 raise Month_Error;
+--        end if;
+      
+--        if D > 29 and M = 2 then
+--  	 raise Day_Error;
+--        end if;
+      
+--        if D = 29 and M = 2 and Check_Leap(Y) = false then
+--  	 raise Day_Error;
+--        end if;
