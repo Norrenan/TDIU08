@@ -1,0 +1,227 @@
+#include "register_handling.h"
+#include "hero_handling.h"
+#include <vector>
+#include <fstream>
+#include <iostream>
+#include <iomanip>
+#include <string>
+#include <algorithm>
+#include <sstream>
+
+using namespace std;
+
+///////////////////////////////////////////////////////////
+//Sortera tider individuellt, reused från o3 KLAR!
+bool operator<(Hero_Type const & lhs,
+	       Hero_Type const & rhs)
+{
+  if (lhs.name < rhs.name)
+  {
+    return true;
+  }
+  else
+  {
+    return false;
+  }
+}
+
+void sorting(vector<Hero_Type> & heroes) //borde sortera hjältarna komplett.
+{
+for (Hero_Type & hero : heroes)
+  {
+    sort(begin(hero.interests), end(hero.interests));
+  }
+sort(begin(heroes), end(heroes));
+
+}
+///////////////////////////////////////////////////////////
+
+void write_hero(vector<Hero_Type> & Heroes, //KLAR!
+		string const & file_name)
+{
+  ofstream hero_file(file_name, ios::out);
+ 
+  for(int i{}; i <  static_cast<int>(Heroes.size()); i++)
+  {
+    hero_file << setw(11) << left << Heroes.at(i).name;
+    hero_file <<setw(12) << Heroes.at(i).birthdate;
+    hero_file << setw(8) << Heroes.at(i).weight;
+    hero_file <<setw (12) << Heroes.at(i).hair;
+
+    for(int k{}; k < static_cast<int>(Heroes.at(i).interests.size()); k++)
+    {
+      hero_file << setw(3) << right << Heroes.at(i).interests.at(k);
+    }
+    
+    hero_file << endl;
+  }
+  hero_file.close();
+}
+
+bool new_hero(vector<Hero_Type> & Heroes,
+	      string const & file_name)
+{
+  Hero_Type tmp;
+  stringstream ss;
+  string s{};
+  int intressen {};
+
+  cin >> tmp.name;
+   for(int i{}; i < static_cast<int>(Heroes.size()); i++)
+   {
+     if (Heroes.at(i).name == tmp.name)
+     {
+       return false;
+     }
+   }
+   cin >> tmp.birthdate;
+   cin >> tmp.weight;
+   cin >> tmp.hair;
+
+    getline(cin, s);
+    ss.str(s);
+   
+    while (ss >> intressen)
+    {
+      tmp.interests.push_back(intressen);
+    }
+
+   
+   Heroes.push_back(tmp); //gör pushback, sen sort, sen lagra
+   sorting(Heroes); //FUNKAR! YEEEES 
+   write_hero(Heroes, file_name); //funkar nu!
+
+   return true;
+}
+
+/////////////////////////////////////////////////////////// KLAR
+bool read_hero(fstream & hero_file,
+	       Hero_Type & hero)
+{
+  int intressen{};
+  string s {};
+  stringstream ss;
+  
+  if(!(hero_file >> hero.name)) //finns det inga hjältar kvar : return false
+  {
+    return false;
+  }
+  else
+  { 
+    
+    // hero_file >> hero.name; //laddas in automatiskt
+    hero_file >> hero.birthdate;
+    hero_file >> hero.weight;
+    hero_file >> hero.hair;
+
+    getline(hero_file, s);
+     ss.str(s);
+    
+    while (ss >> intressen)
+    {
+      hero.interests.push_back(intressen);
+    }
+      
+    return true;
+  }
+  //finns det hjältar kvar :läs in i hero_file som ovan och sedan return true
+ 
+}
+
+///////////////////////////////////////////////////////////
+
+
+vector<Hero_Type> read_file(fstream & hero_file)
+{
+  Hero_Type hero{};
+  vector<Hero_Type> heroes;
+
+  while (read_hero(hero_file, hero))
+    {
+      heroes.push_back(hero);
+      hero.interests.clear(); //utan denna så sparas intressen från föregående
+    }
+  
+    return heroes;
+}
+
+
+///////////////////////////////////////////////////////////
+bool hero_already_in_registry(vector <Hero_Type> const & match_heroes,
+			      Hero_Type          const & hero) //const &?
+{
+  //loop som kollar om namnet finns i match_heroes
+  for(int i{}; i < static_cast<int>(match_heroes.size()); i++)
+  {
+    if (match_heroes.at(i).name == hero.name)
+    {
+      return true;
+    }
+  }
+  
+  return false;
+}
+
+
+vector<Hero_Type> search_heroes(vector<Hero_Type> const & heroes,
+				vector<int>       const & numb)
+{
+  vector<Hero_Type> match_heroes{};
+  Hero_Type hero{};
+
+  for (int i{}; i <static_cast<int>(numb.size()); i++)
+  {
+    for (int j{}; j < static_cast<int>(heroes.size()); j++)
+    {
+      for (int k{}; k < static_cast<int>(heroes.at(j).interests.size()); k++)
+      {
+	if (numb.at(i) == heroes.at(j).interests.at(k))
+	{ //ifsats för att kolla om hjälten redan finns i match_heroes, isf skippa
+	  if (not hero_already_in_registry(match_heroes, heroes.at(j)))
+	    {
+	  hero.name = heroes.at(j).name;
+	  hero.birthdate = heroes.at(j).birthdate;
+	  hero.weight = heroes.at(j).weight;
+	  hero.hair = heroes.at(j).hair;
+
+	  for(int l{}; l < static_cast<int>(heroes.at(j).interests.size()); l++)
+	  {
+	    hero.interests.push_back(heroes.at(j).interests.at(l)); 
+	  }
+	  match_heroes.push_back(hero);
+	  hero.interests.clear(); //måste ta bort så att det inte lagra dubbelt på nästa
+	    }
+	}
+      }
+    }
+  }
+
+  return match_heroes;
+}
+
+
+  void print_heroes (vector <Hero_Type> const & match_heroes)
+  {
+
+
+    for(int i{}; i <  static_cast<int>(match_heroes.size()); i++)
+    {
+      cout << setw(11) << left << match_heroes.at(i).name;
+      cout << setw(12) << match_heroes.at(i).birthdate;
+      cout << setw(8) << match_heroes.at(i).weight;
+      cout << setw (12) << match_heroes.at(i).hair;
+
+      for(int k{}; k < static_cast<int>(match_heroes.at(i).interests.size()); k++)
+      {
+	cout << setw(3) << right << match_heroes.at(i).interests.at(k);
+      }    
+
+      cout << endl;
+
+    }
+  }
+
+
+
+
+
