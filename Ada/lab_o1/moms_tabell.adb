@@ -9,8 +9,6 @@ First_Price, Last_Price, Steps, Percent, Moms : Float;
   
 begin
    
-   
-   
    loop
       
    Put("Första pris: ");
@@ -63,9 +61,7 @@ begin
    Put_Line("Pris utan moms  Moms   Pris med moms");
    
    
-   while First_Price <= (Last_Price+0.001) loop --while loop då satsen ska skrivas åtminstonde en gång. 
-      
-   --last price plussas då flyttal inte är exakta vid multiplikation/addition med andra flyttal, t.ex 1.00000000000032132
+   while First_Price <= (Last_Price+0.001) loop  
       
    Moms := (Percent/100.0) * First_price;
    Put(First_Price, 6, 2, 0);
