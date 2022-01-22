@@ -3,7 +3,6 @@ with Ada.Integer_Text_IO;         use Ada.Integer_Text_IO;
 with Ada.Unchecked_Deallocation;
 
 package body Sorted_List is
-   --används för att frigöra minne, används med remove och delete
    procedure Free is new Ada.Unchecked_Deallocation(Ptr, List_Type);
    
    function Empty(List : in List_Type)return Boolean is
@@ -13,13 +12,12 @@ package body Sorted_List is
       
    end Empty;
    
-   --använder rekursion för att ta in nästa värde och sorterar det samtidigt som den tar in nästa värde
    procedure Insert (List : in out List_Type; I : in Integer) is
       
       Temp : List_Type;   
    begin
       if Empty(List) then
-	 List := new Ptr;  --alternativt: list := new ptr'(I,null);
+	 List := new Ptr; 
 	 List.Data := I;
 	 List.Next := null;
 	 
@@ -30,7 +28,7 @@ package body Sorted_List is
 	 List.next := Temp;
 	 
       elsif I = List.Data then
-      	 return; -- om värdet redan finns så lagras det inte igen utan ignoreras
+      	 return; 
 	 
       else
 	 Insert(List.next, I);
@@ -38,10 +36,9 @@ package body Sorted_List is
       
    end Insert;
    
-   --Rekursion för att skriva ut värdena i den ordningen som de lagrades ifrån input
    procedure Put(List: in List_type) is
    begin
-      if Empty(List) then  -- if not empty(list) then
+      if Empty(List) then  
 	 null;
       else
 	 Put(" ");
@@ -51,7 +48,7 @@ package body Sorted_List is
       end if;
       
    end Put;
-   --Rekursion för att gå igenom listan och se om ett värde stämmer överens med det sökta värdet
+  
    function Member(List : in List_Type; Key : in integer)return Boolean is
    begin
       if Empty(List) then
@@ -63,7 +60,7 @@ package body Sorted_List is
       end if;
       
    end Member;
-   --Rekursion för att se om det sökta värdet finns i listan och då sätta det till null genom UP "free".
+   
    procedure Remove(List : in out List_Type; Key : in integer) is
       Temp : List_Type;   
    begin
@@ -80,7 +77,7 @@ package body Sorted_List is
       Remove(List.Next, Key);
 
    end Remove;
-   --Rekursion för att gå igenom hela listan och ta bort datan genom UP "free".
+
    procedure Delete (List : in out List_Type) is
       Temp : List_Type;
    begin
@@ -97,12 +94,10 @@ package body Sorted_List is
 
 	 Delete(list);
       end if;
-
-      --free(list);
       
    end Delete;
    
-   --Räknar ut längden på listan genom rekursion
+  
    function Length(List : in List_type)return Integer is
    begin
       
