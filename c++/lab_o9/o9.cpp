@@ -8,8 +8,8 @@
 using namespace std;
 
 
-vector<int> load_array_interests() // inte i något paket då den inte har med
-{                                  // Register_hand. eller hero att göra.
+vector<int> load_array_interests() 
+{                                  
   vector<int> numb{};
   stringstream ss;
   int integer{};
@@ -38,7 +38,7 @@ void hero_register(Register_Type       & heroes,
   {
     cout << "Enter hero information:" << endl;
 	
-    if (not new_hero(heroes, file_name)) //bytte till not ist för == frånt ips av komplettering
+    if (not new_hero(heroes, file_name)) 
     {
       cout << "Hero already in register. ";
       cin.ignore(1000,'\n');
@@ -131,8 +131,8 @@ void menu (Register_Type       & heroes,
 //-------------------MAIN-------------------------//
 int main(int argc, char*argv[])
 {
-  ifstream hero_file; //bytte från en fstream till en ifstream då endast
-  Register_Type heroes; //inläsning sker.
+  ifstream hero_file; 
+  Register_Type heroes;
   string file_name{};
   
   if (argc < 2 or argc > 2)
@@ -144,8 +144,8 @@ int main(int argc, char*argv[])
   {
     file_name = argv[1];
     hero_file.open(argv[1]);
-    heroes = read_file(hero_file); //ladda array med data från fil.
-    hero_file.close(); //viktigt att stänga filen!
+    heroes = read_file(hero_file); 
+    hero_file.close(); 
     
     menu(heroes, file_name); 
   }
