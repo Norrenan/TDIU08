@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cctype>
 #include <iomanip>
-#include <string> //la till biblotek från komplettering
+#include <string>
 
 using namespace std;
 
@@ -28,7 +28,7 @@ int main() {
   int max_length {};
   
   cout << "Del 1: Temperaturtabell" << endl;
-  do  // kan göras med en while loop också, med en if sats och en break
+  do  
   {
     cout << "Ange startvärde: ";
     cin >> start;
