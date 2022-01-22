@@ -10,10 +10,9 @@ procedure O3 is
    --                   TYPER                    
    ------------------------------------------
    
-   type Typ1 is                   --Dessa värden hette DS1 till DS3 tidigare men
-     array (31..35) of float;     --ändrades då jag fick komplettering för det,
-                                  --och det sades att variablarna skulle heta
-                                  --på det viset.
+   type Typ1 is                   
+     array (31..35) of float;     
+                                  
    --/////////////////////////////////////////
    
    subtype Charrange is Character range '5'..'9';
@@ -47,17 +46,17 @@ procedure O3 is
    
    ---------------------
    
-   procedure Put (DS3 : in typ3) is  --fick komplettering för att DS3
-   begin                          --lagrar data på fel plats, vilket den inte
-                                  --gör. Charrange2 /= charrange.
+   procedure Put (DS3 : in typ3) is  
+   begin                          
+                                 
       for I in DS3'first..DS3'last loop
 	 for J in Charrange2 loop
 	    Put(" ");
 	    Put(DS3(I,J),Width  => 1);
 	 end loop;
       end loop;
-      --Debug C(73,'4') Stämmer överens med vad värdet ska vara enligt
-      New_Line;     --uppgift etc..
+  
+      New_Line;    
       
    end Put;
    
@@ -117,20 +116,16 @@ procedure O3 is
    --             HUVUDPROGRAM
    -----------------------------------------
    
-   DS1 : Typ1;--Enligt uppgift så står det att datatyperna DS1 till DS3 ska
-   DS2 : Typ2;--deklareras, vilket de gjort enligt uppgiften.
-   DS3 : Typ3;--men i kompleteringen står det att jag saknar DS1 till DS3 som
-              --variabler. Ska jag alltså
-              --endast byta namn på variablerna från A till C till DS1 till DS3?
-begin         --Om jag byter namn på variablerna så måste jag byta namn på
-            --typerna då man inte kan ha DS1 : DS1; utan att få kompeleringsfel 
-            --Om detta är fel snälla skriv det i nästa kompleteringstext då
-            --jag inte riktigt förstår kompletteringarna.
+   DS1 : Typ1;
+   DS2 : Typ2;
+   DS3 : Typ3;
+   
+begin         
    
    Put_line("För DS1:");
-   Put("Mata in datamängd: ");  --Flyttade ut put för att fick komplettering
-   Get(DS1);                      --pga det i O3.2 och antar att samma gäller
-   Put("Inmatad datamängd:");	--här.
+   Put("Mata in datamängd: ");  
+   Get(DS1);                      
+   Put("Inmatad datamängd:");	
    Put(DS1);                      
    New_Line(2);
 
