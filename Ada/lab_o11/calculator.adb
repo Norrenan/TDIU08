@@ -133,7 +133,7 @@ procedure Calculator is
       Put_Line("3. Beräkna N-fakultet");
       Put_Line("4. Avsluta programmet");
 
-      --loop (minst en gång = loop)
+   
       loop
 	 Put("Val: ");
 	 Get(selections);
