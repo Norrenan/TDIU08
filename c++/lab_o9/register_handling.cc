@@ -11,7 +11,6 @@
 using namespace std;
 
 //------------------------------------------------//
-//Sortera, reused från o3 
 bool operator<(Hero_Type const & lhs,
 	       Hero_Type const & rhs)
 {
@@ -36,7 +35,7 @@ void sorting(Register_Type & heroes)
 }
 //------------------------------------------------//
 void print_heroes (ostream             & write_or_cout,
-		   Register_Type const & Heroes) //skriver ut hjältar
+		   Register_Type const & Heroes) 
 {
    write_or_cout << fixed << setprecision(2);
 
@@ -62,9 +61,8 @@ void write_hero(Register_Type       & Heroes,
 {
   ofstream hero_file(file_name, ios::out);
  
-  print_heroes(hero_file, Heroes); //bytte lite parametrar så man kan
-  //använda print_heroes till både skrivning till fil samt skärm, för
-  hero_file.close(); //att undvika kodduplicering.
+  print_heroes(hero_file, Heroes); 
+  hero_file.close(); 
 }
 
 //------------------------------------------------//
@@ -96,7 +94,6 @@ bool new_hero(Register_Type  & Heroes,
     tmp.interests.push_back(intressen);
   }
 
-  //gör pushback, sen sort, sen lagra
   Heroes.push_back(tmp); 
   sorting(Heroes); 
   write_hero(Heroes, file_name);
@@ -111,7 +108,7 @@ Register_Type read_file(ifstream & hero_file)
   Hero_Type hero{};
   Register_Type heroes;
 
-  while (read_hero(hero_file, hero)) // i read_hero så sparas även en hjälte
+  while (read_hero(hero_file, hero)) 
   {
     heroes.push_back(hero);
     hero.interests.clear(); //utan denna så sparas intressen från föregående, no bueno
@@ -122,9 +119,7 @@ Register_Type read_file(ifstream & hero_file)
 
 //------------------------------------------------//
 bool hero_already_in_registry(Register_Type const & match_heroes,
-			      Hero_Type     const & hero) //const &?
-{
-  //loop som kollar om namnet redan finns i match_heroes
+			      Hero_Type     const & hero) 
   for(int i{}; i < static_cast<int>(match_heroes.size()); i++)
   {
     if (match_heroes.at(i).name == hero.name)
@@ -151,12 +146,9 @@ Register_Type search_heroes(Register_Type   const & heroes,
       {
 	if (numb.at(i) == heroes.at(j).interests.at(k))
 	{
-
-//ifsats för att kolla om hjälten redan finns i match_heroes, isf skippa den.
 	  if (not hero_already_in_registry(match_heroes, heroes.at(j)))
 	  {
-      	    hero = heroes.at(j); //innan kopierades allt bit för bit
-	    //tips efter komp gav ide till att kopiera hela på en gång.
+      	    hero = heroes.at(j) 
 	    match_heroes.push_back(hero);	   
 	  }
 	}
