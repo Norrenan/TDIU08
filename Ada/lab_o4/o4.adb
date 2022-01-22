@@ -12,7 +12,6 @@ procedure O4 is
    Month_Error: exception;
    Day_Error : exception; 
    
-   --Funktion som kontrollerar om ett år är ett skottår. nu fixad så att även 2100 inte är ett skottår.
    function Check_Leap (Y : in integer) return Boolean is
       Bool : Boolean;
    begin
@@ -122,7 +121,6 @@ procedure O4 is
       
    end Get_Date_Safe;
    
-   --procedure som skriver ut datum.
    procedure Display_date (Y, M, D : in Integer) is
    begin
       Put("År ");
