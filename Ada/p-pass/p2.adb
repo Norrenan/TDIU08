@@ -59,7 +59,7 @@ begin
    Put("Summan av dessa blev: ");
    Put(Flyttal + Heltal, 0, 2, 0);
    New_Line(2);
-   Skip_Line; --utifall användaren skriver in ett flyttal istället för en integer.
+   Skip_Line; 
    
    --del 2
    Put("Skriv in två flyttal: ");
@@ -71,7 +71,7 @@ begin
    Put(" ");
    Put(F2,0,1,0);
    New_Line(2);
-   Skip_Line; -- kan vara bra att ha om användaren skriver in fler än två inputs etc(?)
+   Skip_Line;
    
    --del 3
    Put("Mata in ett tecken: ");
