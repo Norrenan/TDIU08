@@ -17,7 +17,7 @@ struct Runner_Type
   vector<double> time;
 };
 
-using Runner_Cloud = vector<Runner_Type>; //Mitt "moln" med användare
+using Runner_Cloud = vector<Runner_Type>; 
 
 //////////////////////UP///////////////////////
 
@@ -74,7 +74,6 @@ bool operator<(Runner_Type const & lhs,
   cout << "Efternamn   Förnamn           Klubb: Tider" << endl
        << "==========================================" << endl;
     
-  //for loop med databas där namn, klubb och tider skrivs ut.
   for (Runner_Type & runner : runners)
   {
     cout << setw(9) << right <<runner.last_name << setw(10)<< runner.first_name << setw(16)
@@ -91,9 +90,9 @@ bool operator<(Runner_Type const & lhs,
 
 int main() {
 
-  cout << fixed << setprecision(2); //2 decimaler i hela programmet
+  cout << fixed << setprecision(2);
   
-  Runner_Cloud runners; //mitt "moln" med användare. initialierad högre upp som en array av Runner_Type
+  Runner_Cloud runners; 
   string text;
   
   cout << "Mata in deltagare:" << endl;
@@ -117,15 +116,14 @@ int main() {
     store_time(runner);
   }
 
-  //Sortera tider individuellt
+  
   for (Runner_Type & runner : runners)
   {
     sort(begin(runner.time), end(runner.time));
   }
   
-  //sortera personer efter tider
   sort(begin(runners), end(runners)); 
-  //skriv ut resultat
+	
   print_results(runners);
   
   return 0;
