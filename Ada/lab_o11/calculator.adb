@@ -6,7 +6,6 @@ with Ada.Numerics.Elementary_Functions;    use Ada.Numerics.Elementary_Functions
 
 procedure Calculator is
    
-
    
    function Calculate_Factorial (N : Integer) return Integer is --returnerar heltal enligt uppgiften
  
