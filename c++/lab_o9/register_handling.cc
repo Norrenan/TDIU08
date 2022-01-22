@@ -148,7 +148,7 @@ Register_Type search_heroes(Register_Type   const & heroes,
 	{
 	  if (not hero_already_in_registry(match_heroes, heroes.at(j)))
 	  {
-      	    hero = heroes.at(j) 
+      	    hero = heroes.at(j);
 	    match_heroes.push_back(hero);	   
 	  }
 	}
