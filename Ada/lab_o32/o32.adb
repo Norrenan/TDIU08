@@ -4,7 +4,6 @@ with Ada.Float_Text_IO;           use Ada.Float_Text_IO;
 
 procedure O32 is
    
-   --komplettering: Bytte variablernamn från A-C till DS1-DS3
    ------------------------------------------
    --                   TYPER                    
    ------------------------------------------
