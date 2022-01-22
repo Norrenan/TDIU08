@@ -14,7 +14,6 @@ begin
 end O5;
 
 
-  
       --  for Z in 1..Integer'Value(Argument(1)) loop
       --  	 Put(Argument(2));
       --  end loop;
