@@ -62,13 +62,13 @@ procedure o6 is
 	    end if;
 	 end loop;
 	 
-	 --kovertera strings till integers
+	 
 	 Date.Y := Integer'Value(S(1..4));
 	 Date.M := Integer'Value(S(6..7));
 	 Date.D := Integer'Value(S(9..10));
 	 
-	 --kontrollera integers
-	-- Test_Date(Date);
+	
+
 	 if Date.Y < 100 or Date.Y >= 10000 then
 	    raise Format_Error;
 
@@ -115,14 +115,9 @@ end;
    ------------------------------------------------------------------
    --DEL B
    ------------------------------------------------------------------
-   --hjälpunderprogram för prev and next som kontrollerar så att datumet är i korrekt format
+ 
    function Check (Date : in Date_Type) return boolean is
    begin
-     --  if Date.Y < 100 or Date.Y >= 10000 then
-     --  	    return false;
-
-     --  	 elsif Date.Y < 1535 or Date.Y > 9000 then
-     --  	    return false;
 	    
 	 if Date.M <= 0 or Date.M > 12 then
 	    return false;
@@ -143,7 +138,7 @@ end;
        
      end Check;
    
-   --underprogram next
+ 
    function Next_Date (Date : in Date_Type) return Date_type is
    Next : Date_Type;   
    begin
@@ -173,7 +168,7 @@ end;
       end Next_Date;
       
       
-      --HJälpunderprogram för prev_date.
+   
       procedure Last_Day_Of_Month (date : in out Date_Type) is
       begin
 	 
@@ -189,7 +184,7 @@ end;
 	 
     end Last_Day_Of_month;
     
-    --Underprogram Prev_date
+
       function Previous_Date (Date : in Date_Type) return Date_Type is
 	Prev : Date_Type; 
       begin
@@ -270,29 +265,29 @@ begin
    Put(Previous_Date(Date_1));
    New_Line;
    
-   --  Put("Mata in Datum 2: ");
-   --  Get(Date_2);
+   Put("Mata in Datum 2: ");
+   Get(Date_2);
    
-   --  Put("Datum 1 > Datum 2? ");
-   --  if Date_1 > Date_2 then
-   --     Put_Line("Ja.");
-   --  else
-   --     Put_Line("Nej.");
-   --  end if;
+   Put("Datum 1 > Datum 2? ");
+   if Date_1 > Date_2 then
+       Put_Line("Ja.");
+   else
+     Put_Line("Nej.");
+   end if;
    
-   --  Put("Datum 1 < Datum 2? ");
-   --  if Date_1 < Date_2 then
-   --     Put_Line("Ja.");
-   --  else
-   --     Put_Line("Nej.");
-   --  end if;
+   Put("Datum 1 < Datum 2? ");
+   if Date_1 < Date_2 then
+      Put_Line("Ja.");
+   else
+     Put_Line("Nej.");
+   end if;
    
-   --  Put("Datum 1 = Datum 2? ");
-   --  if Date_1 = Date_2 then
-   --     Put_Line("Ja.");
-   --  else
-   --     Put_Line("Nej.");
-   --  end if;
+   Put("Datum 1 = Datum 2? ");
+   if Date_1 = Date_2 then
+       Put_Line("Ja.");
+   else
+      Put_Line("Nej.");
+   end if;
     
 exception
    when Format_Error =>
