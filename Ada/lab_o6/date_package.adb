@@ -91,7 +91,7 @@ package body Date_Package is
 	    raise Format_Error;
 	 end if;
 	 
-	 Check_Format(S,1,4);  --skapade underprogram check_format efter komplettering
+	 Check_Format(S,1,4);  
 	 Check_Format(S,6,7);
 	 Check_Format(S,9,10);
 	 
@@ -106,7 +106,7 @@ package body Date_Package is
       end;
    end Get;
    
-   --Underprogrammet put
+  
    procedure put (Date : in Date_Type) is
    begin
       Put(Date.Y, Width => 1);
@@ -127,7 +127,7 @@ package body Date_Package is
    --DEL B
    ------------------------------------------------------------------
    
-   --Underprogrammet Next
+ 
    function Next_Date (Date : in Date_Type) return Date_type is
       Next : Date_Type;   
    begin
@@ -157,7 +157,7 @@ package body Date_Package is
    end Next_Date;
    
    
-   --Hjälpunderprogram för Prev som kollar vilket som är sista datumet i månaden.
+  
    procedure Last_Day_Of_Month (date : in out Date_Type) is
    begin
       
@@ -173,7 +173,7 @@ package body Date_Package is
       
    end Last_Day_Of_month;
    
-   --Underprogram Prev_date
+
    function Previous_Date (Date : in Date_Type) return Date_Type is
       Prev : Date_Type; 
    begin
@@ -201,7 +201,7 @@ package body Date_Package is
       
    end Previous_Date;
    
-   --Underprogrammet = som kontrollerar om datumen är lika.
+  
    function "=" (Left, Right : in Date_Type) return Boolean is
    begin
       
@@ -213,7 +213,7 @@ package body Date_Package is
       
    end "=";
    
-   --Om värdet inte hittas i loopen betyder det att värdet är större än det första.
+  
    function "<" (Left, Right : in Date_Type) return Boolean is
       min_Date : Date_Type;
       Test : Date_Type;
@@ -231,7 +231,7 @@ package body Date_Package is
       return False;
    end "<"; 
    
-   --Underprogrammet ">" som svarar ja eller nej beroende på vad ovanstående funktioner säger. bra tips av assistent.
+   
    function ">" (Left, right : in Date_Type) return boolean is
       
    begin
