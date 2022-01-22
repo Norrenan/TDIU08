@@ -7,7 +7,6 @@ using namespace std;
 
 //////////////////////////UP///////////////////////////////////
 
-//räkna ut n-faktultet
 int calc_fak(int & n) 
 {
   int summa {1};
@@ -17,7 +16,7 @@ int calc_fak(int & n)
   }
   return summa;
 }	      
-//multiplicerar texten och lagrar i en ny variabel, som skickas tillbaka
+
 string multi_text(string const & text,
 		  int & multiplier)
 {
@@ -28,7 +27,7 @@ string multi_text(string const & text,
   }
   return multipli;
 }
-//klassisk swap
+
 void swap(int & a,
 	  double & b)
 {
@@ -36,7 +35,7 @@ void swap(int & a,
   b = a;
   a = static_cast<int>(ceil(temp));
 }
-//omvandlar värden på string, man kan använda .size() ist för .length().
+
 void string_length(string const & text_1,
 		   string const & text_2,
 		   int & total_length,
